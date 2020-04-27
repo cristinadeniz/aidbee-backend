@@ -30,7 +30,7 @@ function updateMyProfile (req, res) {
 function deleteMyProfile (req, res) {
   const userId = res.locals.user._id
   UserModel
-    .remove(userId)
+    .remove({ _id: userId})
     .then(response => res.json(response))
     .catch(err => handleError(err, res))
 }
