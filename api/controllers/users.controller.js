@@ -2,39 +2,36 @@ const UserModel = require('../models/users.model')
 const { handleError } = require('../utils')
 
 module.exports = {
-  getAllUsers,
-  getUserById,
-  deleteUserById,
-  updateUser
+  getMyProfile,
+  updateMyProfile,
+  deleteMyProfile
 }
 
-function getAllUsers (req, res) {
+
+function getMyProfile (req, res) {
+  const userId = res.locals.user._id
   UserModel
-    .find()
+    .findById(userId)
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
 }
 
-function getUserById (req, res) {
+function updateMyProfile (req, res) {
+  const userId = res.locals.user._id
   UserModel
-    .findById(req.params.id)
-    .then(response => res.json(response))
-    .catch((err) => handleError(err, res))
-}
-
-function deleteUserById (req, res) {
-  UserModel
-    .remove({ _id: req.params.id })
-    .then(response => res.json(response))
-    .catch(err => handleError(err, res))
-}
-
-function updateUser (req, res) {
-  UserModel
-    .findByIdAndUpdate(req.params.id, req.body, {
+    .findByIdAndUpdate(userId, req.body, {
       new: true,
       runValidators: true
     })
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
 }
+
+function deleteMyProfile (req, res) {
+  const userId = res.locals.user._id
+  UserModel
+    .remove(userId)
+    .then(response => res.json(response))
+    .catch(err => handleError(err, res))
+}
+

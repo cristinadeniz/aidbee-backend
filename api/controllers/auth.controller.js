@@ -7,11 +7,13 @@ module.exports = {
   login
 }
 function signup(req, res) {
-  const hashedPwd = bcrypt.hashSync(req.body.password, 10)
+  const hashedPwd = bcrypt.hashSync(req.body.password, 6)
   const userBody = {
     name: req.body.name,
+    surname: req.body.surname,
     email: req.body.email,
-    password: hashedPwd
+    password: hashedPwd,
+    telephone: req.body.telephone
   }
   UserModel.create(userBody)
     .then(() => {

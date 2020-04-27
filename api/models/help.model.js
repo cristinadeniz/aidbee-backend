@@ -5,7 +5,11 @@ const helpSchema = new mongoose.Schema({
     type: String, 
     enum: ['Health', 'Food', 'Other']
   },
-  userId: {
+  userAskingForHelp: {
+    type: moongose.Schema.Types.ObjectId,
+    ref: 'user'
+  },
+  helper: {
     type: moongose.Schema.Types.ObjectId,
     ref: 'user'
   },
@@ -13,7 +17,7 @@ const helpSchema = new mongoose.Schema({
     type: String,
     required: [true, 'telephone is required']
   },
-  helpRequest: {
+  requestTitle: {
     type: String,
     required: [true, 'telephone is required']
   },

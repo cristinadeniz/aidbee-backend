@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   },
   surname: {
     type: String,
-    required: [true, 'Name is required']
+    required: [true, 'Surname is required']
   },
   email: {
     type: String,
@@ -25,11 +25,14 @@ const userSchema = new mongoose.Schema({
   },
   telephone: {
     type: String,
-    required: [true, 'telephone is required']
+    required: [true, 'Telephone is required']
   },
   createdAt: {
     type: Number,
     default: Date.now() // Get a timestamp :)
+  }, 
+  image_url: {
+    type: String, 
   }
 })
 
