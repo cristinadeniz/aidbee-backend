@@ -58,12 +58,18 @@ POST http://DOMAIN/api/auth/signup
 METHOD | URL                     | What does it do                 |
 -------|-------------------------|---------------------------------|
 GET    | `/:helpId`              | Get Help By Id                  |
-GET    | `/helps`                | Get All Helps or by query       |
-GET    | `me/userID/helpID`      | Get One Help By User            |
-GET    | `me/userID/helps`       | Get All Helps By User           |
-POST   | `/`                     | Create Help                     |
+GET    | `me/helps`              | Get All My Helps Requests       |
+GET    | `me/userID/helpID`      | Get All My Accepted Helps       |
+POST   | `me/`                   | Create Help                     |
 DELETE | `me/:helpId`            | Delete Help By Id               |
 PUT    | `me/:helpId`            | Update Help By Id               |
+PUT    | `me/:helpId/acceptHelp` | Update Help By Id               |
+PUT    | `me/:helpId/refuseHelp` | Update Help By Id               |
+
+
+
+
+
 
 ### FILTERS
 Filter by type of Help (Health, Food, Others)
