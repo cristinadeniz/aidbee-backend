@@ -28,6 +28,7 @@
 | address             | String                                | -         | yes      |
 | requestTitle        | String                                | -         | yes      |
 | additionalInfo      | String                                | -         |          | 
+| createdAt           | Number                                |           |          |
 
 
 ## API ROUTES
