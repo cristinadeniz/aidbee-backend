@@ -24,7 +24,7 @@
 | --------------------| --------------------------------------| --------- | -------- | ---------------
 | type                | Stringn enum: [Health, Food, Other]   | -         | true     | -
 | userAskingForHelp   | ObjectId                              | Users     | true     | current_user
-| userHelpingAnother  | ObjectId                              | Users     | true     | current_user
+| helper              | ObjectId                              | Users     | true     | current_user
 | address             | String                                | -         | yes      |
 | requestTitle        | String                                | -         | yes      |
 | additionalInfo      | String                                | -         |          | 
