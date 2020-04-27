@@ -5,6 +5,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Name is required']
   },
+  surname: {
+    type: String,
+    required: [true, 'Name is required']
+  },
   email: {
     type: String,
     required: [true, 'Email is required'],
@@ -19,15 +23,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  role: {
+  telephone: {
     type: String,
-    enum: ['host', 'regular'],
-    required: false,
-    default: 'regular'
-  },
-  birthDate: {
-    type: Date,
-    required: false
+    required: [true, 'telephone is required']
   },
   createdAt: {
     type: Number,
