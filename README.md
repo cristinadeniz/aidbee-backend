@@ -48,10 +48,9 @@ POST http://DOMAIN/api/auth/signup
 
 | METHOD | URL                       | What does it do          |
 | ------ | ------------------------- | ------------------------ |
-| GET    | `me/:userID`              | Get One User By Id       |
-| POST   | `me/:userID`              | Create One User          |
-| PUT    | `me/:userID`              | Update User By Id        |
-| DELETE | `me/:userID`              | Delete User By Id        |
+| GET    | `/me`                     | Get One User By Id       |
+| PUT    | `/me`                     | Update User By Id        |
+| DELETE | `/me`                     | Delete User By Id        |
 
 ### HELP ENDPOINTS
 > TOKEN Required: YES
