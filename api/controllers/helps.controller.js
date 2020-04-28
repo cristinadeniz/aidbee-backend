@@ -1,4 +1,4 @@
-const UserModel = require('../models/users.model')
+const HelpModel = require('../models/helps.model')
 const { handleError } = require('../utils')
 
 module.exports = {
@@ -9,18 +9,32 @@ module.exports = {
   deleteHelpById
 }
 
-function getMyProfile (req, res) {
-  const userId = res.locals.user._id
-  UserModel
-    .findById(userId)
+ function getHelps (req, res) {
+  HelpModel
+    .find()
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
 }
 
-function updateMyProfile (req, res) {
-  const userId = res.locals.user._id
-  UserModel
-    .findByIdAndUpdate(userId, req.body, {
+function createHelp (req, res) {
+  HelpModel
+    .create(req.body)
+    .then((help) => {
+      res.json(help)
+    })
+    .catch((err) => handleError(err, res))
+}
+
+function getHelpById (req, res) {
+  HelpModel
+    .findById(req.params.id)
+    .then(help => res.json(help))
+    .catch((err) => handleError(err, res))
+}
+
+function updateHelpById (req, res) {
+  HelpModel
+    .findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true
     })
@@ -28,10 +42,9 @@ function updateMyProfile (req, res) {
     .catch((err) => handleError(err, res))
 }
 
-function deleteMyProfile (req, res) {
-  const userId = res.locals.user._id
-  UserModel
-    .remove({ _id: userId})
+function deleteHelpById (req, res) {
+  HelpModel
+    .remove({ _id: req.params.id })
     .then(response => res.json(response))
     .catch(err => handleError(err, res))
 }

@@ -27,7 +27,7 @@ function updateMyProfile (req, res) {
 }
 
 function deleteMyProfile (req, res) {
-  const userId = res.locals.user._id
+  const userId = res.locals._id
   UserModel
     .remove({ _id: userId})
     .then(response => res.json(response))

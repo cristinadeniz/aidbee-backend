@@ -7,11 +7,11 @@ const helpSchema = new mongoose.Schema({
   },
   address: {
     type: String,
-    required: [true, 'telephone is required']
+    //required: [true, 'address is required']
   },
   request_title: {
     type: String,
-    required: [true, 'telephone is required']
+    //required: [true, 'request is required']
   },
   additional_info: {
     type: String
@@ -25,11 +25,11 @@ const helpSchema = new mongoose.Schema({
     default: Date.now() // Get a timestamp :)
   },
   requester: {
-    type: moongose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
   },
   helper: {
-    type: moongose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
   },
 })

@@ -6,7 +6,7 @@ const {
   getHelpById,
   updateHelpById,
   deleteHelpById
-} = require('../controllers/help.controller')
+} = require('../controllers/helps.controller')
 
 router.get('/', getHelps)
 router.post('/', createHelp)
