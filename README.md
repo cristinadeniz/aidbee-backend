@@ -15,21 +15,30 @@
 | email     | String | true     | regex(email  |
 | password  | String | true     | min(6)       |
 | telephone | String | true     |              |
-| image_url | String |          |              | 
-| createdAt | Number |          |              |
+| image_url | String |          |              |
+| created_at |Number|          |              |
 
 ### HELP MODEL
- 
-| KEY                 |  TYPE                                 | REFERENCE | REQUIRED | VALIDATIONS / DEFAULT
-| --------------------| --------------------------------------| --------- | -------- | ---------------
-| type                | Stringn enum: [Health, Food, Other]   | -         | true     | -
-| userAskingForHelp   | ObjectId                              | Users     | true     | current_user
-| helper              | ObjectId                              | Users     | true     | current_user
-| address             | String                                | -         | yes      |
-| requestTitle        | String                                | -         | yes      |
-| additionalInfo      | String                                | -         |          | 
-| createdAt           | Number                                |           |          |
 
+| KEY                 |  TYPE      | REFERENCE | REQUIRED | VALIDATIONS / DEFAULT
+| --------------------| -----------| --------- | -------- | ---------------
+| request_title       | String     | -         | yes
+| address             | String     | -         | yes
+| help_type           | String     | -         | true     | enum: [`health`, `food`, `other`]
+| additional_info     | String     | -         |          |
+| is_done             | Boolean    | -         |          | false
+| created_at          | Date       |           |
+| requester           | ObjectId   | Users     | true     | current_user
+| helper              | ObjectId   | Users     |          |
+
+### REQUEST MODEL
+
+| KEY                 |  TYPE      | REFERENCE | REQUIRED | VALIDATIONS / DEFAULT
+| --------------------| -----------| --------- | -------- | ---------------
+| message             | String     | -         | yes
+| status              | String     | -         |          | enum: [`requested`, `accepted`, `done`, `rejected`]
+| help                | ObjectId   | Help      | true
+| user                | ObjectId   | Users     | true     | current_user
 
 ## API ROUTES
 
@@ -56,19 +65,33 @@ POST http://DOMAIN/api/auth/signup
 | PUT    | `/me`                     | Update My Profile        |
 | DELETE | `/me`                     | Delete My Profile        |
 
-### HELP ENDPOINTS
+### HELPS ENDPOINTS (Requester side)
 > TOKEN Required: YES
 
-METHOD | URL                     | What does it do                 |
--------|-------------------------|---------------------------------|
-GET    | `/:helpId`              | Get Help By Id                  |
-GET    | `me/helps`              | Get All My Helps Requests       |
-GET    | `me/userID/helpID`      | Get All My Accepted Helps       |
-POST   | `me/`                   | Create Help                     |
-DELETE | `me/:helpId`            | Delete Help By Id               |
-PUT    | `me/:helpId`            | Update Help By Id               |
-PUT    | `me/:helpId/acceptHelp` | Update Help By Id               |
-PUT    | `me/:helpId/refuseHelp` | Update Help By Id               |
+METHOD | URL                     | What does it do
+-------|-------------------------|---------------------------------
+GET    | `me/helps`              | Get All My Helps
+POST   | `me/helps`              | Create My Help
+GET    | `me/helps/:id`          | Get My Help By Id
+PUT    | `me/helps/:id`          | Update My Help By Id
+DELETE | `me/helps/:id`          | Delete My Help By Id
 
-### FILTERS
-Filter by type of Help (Health, Food, Others)
+### REQUESTS ENDPOINT (Requester side)
+> TOKEN Required: YES
+
+METHOD | URL                                   | What does it do
+-------|---------------------------------------|---------------------------------
+GET    | `me/helps/:id/requests`               | See all Help Requests for a Help
+POST   | `me/helps/:id/requests/:id/accept`    | Accept A Help Requests (now you can help me)
+POST   | `me/helps/:id/requests/:id/refuse`    | Refuse Help Requests (no thanks)
+POST   | `me/helps/:id/requests/:id/done`      | Mark A Help Requests as Completed (thanks)
+
+
+### REQUESTS ENDPOINT (Helper side)
+> TOKEN Required: YES
+
+METHOD | URL                     | What does it do
+-------|-------------------------|---------------------------------
+GET    | `/me/requests`          | Get all my Help Requests
+POST   | `/helps/:id/request`    | Create Help Requests (request to help)
+POST   | `/helps/:id/refuse`     | Remove Help Requests (stop requesting to help)

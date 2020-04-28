@@ -27,12 +27,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Telephone is required']
   },
-  createdAt: {
-    type: Number,
-    default: Date.now() // Get a timestamp :)
-  }, 
   image_url: {
-    type: String, 
+    type: String,
+  },
+  created_at: {
+    type: Date,
+    default: Date.now() // Get a timestamp :)
   }
 })
 

@@ -1,11 +1,30 @@
 const mongoose = require('mongoose')
 
 const helpSchema = new mongoose.Schema({
-  type: {
-    type: String, 
-    enum: ['Health', 'Food', 'Other']
+  help_type: {
+    type: String,
+    enum: ['health', 'food', 'other']
   },
-  userAskingForHelp: {
+  address: {
+    type: String,
+    required: [true, 'telephone is required']
+  },
+  request_title: {
+    type: String,
+    required: [true, 'telephone is required']
+  },
+  additional_info: {
+    type: String
+  },
+  is_done: {
+    type: Boolean,
+    default: false
+  },
+  created_at: {
+    type: Date,
+    default: Date.now() // Get a timestamp :)
+  },
+  requester: {
     type: moongose.Schema.Types.ObjectId,
     ref: 'user'
   },
@@ -13,21 +32,6 @@ const helpSchema = new mongoose.Schema({
     type: moongose.Schema.Types.ObjectId,
     ref: 'user'
   },
-  address: {
-    type: String,
-    required: [true, 'telephone is required']
-  },
-  requestTitle: {
-    type: String,
-    required: [true, 'telephone is required']
-  },
-  additionalInfo: {
-    type: String
-  },
-  createdAt: {
-    type: Number,
-    default: Date.now() // Get a timestamp :)
-  }
 })
 
 const helpModel = mongoose.model('help', helpSchema)

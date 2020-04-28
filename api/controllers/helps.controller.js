@@ -2,9 +2,11 @@ const UserModel = require('../models/users.model')
 const { handleError } = require('../utils')
 
 module.exports = {
-  getMyProfile,
-  updateMyProfile,
-  deleteMyProfile
+  getHelps,
+  createHelp,
+  getHelpById,
+  updateHelpById,
+  deleteHelpById
 }
 
 function getMyProfile (req, res) {

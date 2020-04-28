@@ -6,8 +6,8 @@ const {
   deleteMyProfile
 } = require('../controllers/users.controller')
 
-router.get('/me', getMyProfile)
-router.put('/me', updateMyProfile)
-router.delete('/me', deleteMyProfile)
+router.get('/', getMyProfile)
+router.put('/', updateMyProfile)
+router.delete('/', deleteMyProfile)
 
 module.exports = router
