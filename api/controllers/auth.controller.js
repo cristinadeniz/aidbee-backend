@@ -36,25 +36,27 @@ function signup(req, res) {
 }
 
 function login(req, res) {
+  console.log(req.body);
   UserModel.findOne({ email: req.body.email })
     .then(user => {
       if (!user) {
         return res.json({ error: 'wrong email' })
       }
       bcrypt.compare(req.body.password, user.password, (err, result) => {
-        if (err) { handleError(err, res) }
+        if (err) { return handleError(err, res) }
         if (!result) {
           return res.json({
             error: `wrong password for ${req.body.email}`
           })
+        } else {
+          const userData = { name: user.name, email: user.email }
+          const token = jwt.sign(
+            userData,
+            process.env.SECRET,
+            { expiresIn: '1h' }
+          )
+          return res.json({ token: token, ...userData })
         }
-        const userData = { name: user.name, email: user.email }
-        const token = jwt.sign(
-          userData,
-          process.env.SECRET,
-          { expiresIn: '1h' }
-        )
-        return res.json({ token: token, ...userData })
       })
     })
     .catch(err => handleError(err, res))
