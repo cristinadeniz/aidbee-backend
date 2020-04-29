@@ -7,11 +7,11 @@ const helpSchema = new mongoose.Schema({
   },
   address: {
     type: String,
-    //required: [true, 'address is required']
+    required: [true, 'address is required']
   },
   request_title: {
     type: String,
-    //required: [true, 'request is required']
+    required: [true, 'request_title is required']
   },
   additional_info: {
     type: String
