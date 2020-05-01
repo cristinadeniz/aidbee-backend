@@ -17,6 +17,7 @@ module.exports = {
 }
 
 function createHelp (req, res) {
+  req.body = { requester: res.locals.user, ...req.body}
   HelpModel
     .create(req.body)
     .then((help) => {
