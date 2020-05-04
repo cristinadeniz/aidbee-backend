@@ -26,7 +26,7 @@ function signup(req, res) {
       const token = jwt.sign(
         userData,
         process.env.SECRET,
-        { expiresIn: '1w' }
+        { expiresIn: '7d' }
       )
       return res.json({ token: token, ...userData })
     })
@@ -53,7 +53,7 @@ function login(req, res) {
           const token = jwt.sign(
             userData,
             process.env.SECRET,
-            { expiresIn: '1h' }
+            { expiresIn: '7d' }
           )
           return res.json({ token: token, ...userData })
         }

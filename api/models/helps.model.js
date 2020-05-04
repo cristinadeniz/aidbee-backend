@@ -13,8 +13,16 @@ const helpSchema = new mongoose.Schema({
     type: String,
     required: [true, 'request_title is required']
   },
+  text: {
+    type: String,
+    required: [true, 'text is required']
+  },
   additional_info: {
     type: String
+  },
+  telephone: {
+    type: String,
+    required: [true, 'Telephone is required']
   },
   is_done: {
     type: Boolean,
