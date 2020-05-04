@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const helpSchema = new mongoose.Schema({
   help_type: {
     type: String,
-    enum: ['health', 'food', 'other']
+    enum: ['Health', 'Food', 'Other']
   },
   address: {
     type: String,

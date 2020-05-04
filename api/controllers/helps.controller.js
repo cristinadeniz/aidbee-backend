@@ -9,9 +9,13 @@ module.exports = {
   deleteHelpById
 }
 
- function getHelps (req, res) {
+function getHelps(req, res) {
+  const filter = {}
+  if (req.query.me) {
+    filter.requester = res.locals.user._id
+  }
   HelpModel
-    .find()
+    .find(filter)
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
 }
