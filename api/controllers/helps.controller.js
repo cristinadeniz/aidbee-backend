@@ -4,6 +4,7 @@ const { handleError } = require('../utils')
 module.exports = {
   getHelps,
   createHelp,
+  getAllMyHelpRequests,
   getHelpById,
   updateHelpById,
   deleteHelpById
@@ -29,6 +30,14 @@ function createHelp (req, res) {
     })
     .catch((err) => handleError(err, res))
 }
+
+function getAllMyHelpRequests(req, res) {
+  HelpModel
+    .find()
+    .then(request => res.json(request))
+    .catch((err) => handleError(err, res))
+}
+
 
 function getHelpById (req, res) {
   HelpModel

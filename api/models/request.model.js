@@ -1,23 +1,24 @@
 const mongoose = require('mongoose')
 
-const userSchema = new mongoose.Schema({
+const requestSchema = new mongoose.Schema({
   message: {
     type: String, 
     required: true
   }, 
   status: {
     type: String,
-    enum: ['requested', 'accepted', 'done', 'rejected']
+    enum: ['requested', 'accepted', 'done', 'rejected'],
+    default: 'requested'
   },
   help: {
-    type: moongose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'help'
   },
-  user: {
-    type: moongose.Schema.Types.ObjectId,
+  helper: {
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
   }
 })
 
-const userModel = mongoose.model('user', userSchema)
-module.exports = userModel
+const requestModel = mongoose.model('request', requestSchema)
+module.exports = requestModel

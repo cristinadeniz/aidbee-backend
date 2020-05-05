@@ -3,6 +3,7 @@ const router = require('express').Router()
 const {
   getHelps,
   createHelp,
+  getAllMyHelpRequests,
   getHelpById,
   updateHelpById,
   deleteHelpById
@@ -10,6 +11,7 @@ const {
 
 router.get('/', getHelps)
 router.post('/', createHelp)
+router.get('/requests', getAllMyHelpRequests)
 router.get('/:id', getHelpById)
 router.put('/:id', updateHelpById)
 router.delete('/:id', deleteHelpById)

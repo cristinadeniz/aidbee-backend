@@ -36,10 +36,6 @@ const helpSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
   },
-  helper: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'user'
-  },
 })
 
 const helpModel = mongoose.model('help', helpSchema)
