@@ -35,7 +35,7 @@ const helpSchema = new mongoose.Schema({
   requester: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
-  },
+  }
 })
 
 const helpModel = mongoose.model('help', helpSchema)

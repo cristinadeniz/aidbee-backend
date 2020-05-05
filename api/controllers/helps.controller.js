@@ -4,13 +4,12 @@ const { handleError } = require('../utils')
 module.exports = {
   getHelps,
   createHelp,
-  getAllMyHelpRequests,
   getHelpById,
   updateHelpById,
   deleteHelpById
 }
 
-function getHelps(req, res) {
+function getHelps (req, res) {
   const filter = {}
   if (req.query.me) {
     filter.requester = res.locals.user._id
@@ -22,7 +21,7 @@ function getHelps(req, res) {
 }
 
 function createHelp (req, res) {
-  req.body = { requester: res.locals.user, ...req.body}
+  req.body = { requester: res.locals.user, ...req.body }
   HelpModel
     .create(req.body)
     .then((help) => {
@@ -30,14 +29,6 @@ function createHelp (req, res) {
     })
     .catch((err) => handleError(err, res))
 }
-
-function getAllMyHelpRequests(req, res) {
-  HelpModel
-    .find()
-    .then(request => res.json(request))
-    .catch((err) => handleError(err, res))
-}
-
 
 function getHelpById (req, res) {
   HelpModel
@@ -62,4 +53,3 @@ function deleteHelpById (req, res) {
     .then(response => res.json(response))
     .catch(err => handleError(err, res))
 }
-

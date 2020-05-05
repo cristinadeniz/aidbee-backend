@@ -10,5 +10,4 @@ router.get('/', getMyProfile)
 router.put('/', updateMyProfile)
 router.delete('/', deleteMyProfile)
 
-
 module.exports = router

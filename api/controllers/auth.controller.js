@@ -8,7 +8,7 @@ module.exports = {
   login
 }
 
-function signup(req, res) {
+function signup (req, res) {
   const hashedPwd = bcrypt.hashSync(req.body.password, 10)
   const userBody = {
     name: req.body.name,
@@ -35,8 +35,8 @@ function signup(req, res) {
     })
 }
 
-function login(req, res) {
-  console.log(req.body);
+function login (req, res) {
+  console.log(req.body)
   UserModel.findOne({ email: req.body.email })
     .then(user => {
       if (!user) {

@@ -2,9 +2,9 @@ const mongoose = require('mongoose')
 
 const requestSchema = new mongoose.Schema({
   message: {
-    type: String, 
+    type: String,
     required: true
-  }, 
+  },
   status: {
     type: String,
     enum: ['requested', 'accepted', 'done', 'rejected'],

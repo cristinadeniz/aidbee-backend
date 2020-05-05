@@ -81,10 +81,10 @@ DELETE | `me/helps/:id`          | Delete My Help By Id
 
 METHOD | URL                                   | What does it do
 -------|---------------------------------------|---------------------------------
-GET    | `me/helps/:id/requests`               | See all Help Requests for a Help
-POST   | `me/helps/:id/requests/:id/accept`    | Accept A Help Requests (now you can help me)
-POST   | `me/helps/:id/requests/:id/refuse`    | Refuse Help Requests (no thanks)
-POST   | `me/helps/:id/requests/:id/done`      | Mark A Help Requests as Completed (thanks)
+GET    | `me/helps/requests/:helpId`           | See all Help Requests for a Help
+PUT    | `me/helps/requests/:requestId/accept` | Accept A Help Requests (now you can help me)
+PUT    | `me/helps/requests/:requestId/refuse` | Refuse Help Requests (no thanks)
+PUT    | `me/helps/requests/:requestId/done`   | Mark A Help Requests as Completed (thanks)
 
 
 ### REQUESTS ENDPOINT (Helper side)
@@ -93,5 +93,5 @@ POST   | `me/helps/:id/requests/:id/done`      | Mark A Help Requests as Complet
 METHOD | URL                     | What does it do
 -------|-------------------------|---------------------------------
 GET    | `/me/requests`          | Get all my Help Requests
-POST   | `/helps/:id/request`    | Create Help Requests (request to help)
-POST   | `/helps/:id/refuse`     | Remove Help Requests (stop requesting to help)
+POST   | `/me/request/`          | Create Help Requests (request to help)
+DELETE | `/me/request/:id`       | Remove Help Requests (stop requesting to help)

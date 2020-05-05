@@ -1,11 +1,13 @@
- const router = require('express').Router()
+const router = require('express').Router()
 
- const {
-   createHelpRequests,
-   removeHelpRequest,
- } = require('../controllers/requestsHelper.controller')
+const {
+  getAllMyHelpRequests,
+  createHelpRequests,
+  removeHelpRequest
+} = require('../controllers/requestsHelper.controller')
 
-router.post('/:id/requests/', createHelpRequests)
-router.delete('/requests/:id', removeHelpRequest)
+router.get('/', getAllMyHelpRequests)
+router.post('/:id/requests', createHelpRequests)
+router.delete('/:helpId/requests/:id', removeHelpRequest)
 
- module.exports = router
+module.exports = router

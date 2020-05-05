@@ -27,14 +27,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator (value) {
-        return /^ [+] * [(]{ 0, 1 } [0 - 9]{ 1, 4 } [)]{ 0, 1}[-\s\./0-9]*$/.
-        test(value)
+        return /^ [+] * [(]{ 0, 1 } [0 - 9]{ 1, 4 } [)]{ 0, 1}[-\s./0-9]*$/
+          .test(value)
       }
     },
     required: [true, 'Telephone is required']
   },
   image_url: {
-    type: String,
+    type: String
   },
   created_at: {
     type: Date,

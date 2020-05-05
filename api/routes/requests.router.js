@@ -2,14 +2,14 @@ const router = require('express').Router()
 
 const {
   seeAllHelpRequestForAHelp,
-  AcceptAHelpRequest,
-  RefuseHelpRequest,
-  MarkAHelpRequestAsCompleted
-} = require('../controllers/helps.controller')
+  acceptAHelpRequest,
+  refuseHelpRequest,
+  markAHelpRequestAsCompleted
+} = require('../controllers/request.controller')
 
 router.get('/', seeAllHelpRequestForAHelp)
-router.post('/', AcceptAHelpRequest)
-router.post('/:id', RefuseHelpRequest)
-router.post('/:id', MarkAHelpRequestAsCompleted)
+router.put('/:id/accept', acceptAHelpRequest)
+router.put('/:id/refuse', refuseHelpRequest)
+router.put('/:id/done', markAHelpRequestAsCompleted)
 
 module.exports = router
