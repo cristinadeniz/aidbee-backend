@@ -3,6 +3,7 @@ const { handleError } = require('../utils')
 
 module.exports = {
   getHelps,
+  getOtherUserHelps,
   createHelp,
   getHelpById,
   updateHelpById,
@@ -10,12 +11,16 @@ module.exports = {
 }
 
 function getHelps (req, res) {
-  const filter = {}
-  if (req.query.me) {
-    filter.requester = res.locals.user._id
-  }
   HelpModel
-    .find(filter)
+    .find({ requester: res.locals.user._id })
+    .then(response => res.json(response))
+    .catch((err) => handleError(err, res))
+}
+
+function getOtherUserHelps (req, res) {
+  HelpModel
+    .find({ requester: { $ne: res.locals.user._id } })
+    // .populate('requester')
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
 }

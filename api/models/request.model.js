@@ -2,8 +2,7 @@ const mongoose = require('mongoose')
 
 const requestSchema = new mongoose.Schema({
   message: {
-    type: String,
-    required: true
+    type: String
   },
   status: {
     type: String,

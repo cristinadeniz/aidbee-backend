@@ -22,7 +22,16 @@ const helpSchema = new mongoose.Schema({
   },
   telephone: {
     type: String,
+    validate: {
+      validator (value) {
+        return /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/
+          .test(value)
+      }
+    },
     required: [true, 'Telephone is required']
+  },
+  coordinates: {
+    type: Object
   },
   is_done: {
     type: Boolean,

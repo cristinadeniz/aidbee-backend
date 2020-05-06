@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator (value) {
-        return /^ [+] * [(]{ 0, 1 } [0 - 9]{ 1, 4 } [)]{ 0, 1}[-\s./0-9]*$/
+        return /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/
           .test(value)
       }
     },
