@@ -11,7 +11,7 @@ module.exports = {
 function seeAllHelpRequestForAHelp (req, res) {
   RequestModel
     .find({ helper: { $ne: res.locals.user._id } })
-    .populate('help', 'helper')
+    .populate('help')
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
 }
