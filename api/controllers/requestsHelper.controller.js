@@ -9,7 +9,7 @@ module.exports = {
 
 function getAllMyHelpRequests (req, res) {
   RequestModel
-    .find()
+    .find({ helper: { $eq: res.locals.user._id } })
     .populate({
       path: 'help',
       populate: {
