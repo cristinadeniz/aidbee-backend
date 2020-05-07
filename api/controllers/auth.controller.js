@@ -21,7 +21,8 @@ function signup (req, res) {
     .then(() => {
       const userData = {
         name: req.body.name,
-        email: req.body.email
+        email: req.body.email,
+        img: ''
       }
       const token = jwt.sign(
         userData,
@@ -49,7 +50,7 @@ function login (req, res) {
             error: `wrong password for ${req.body.email}`
           })
         } else {
-          const userData = { name: user.name, email: user.email }
+          const userData = { name: user.name, email: user.email, img: user.image_url }
           const token = jwt.sign(
             userData,
             process.env.SECRET,
