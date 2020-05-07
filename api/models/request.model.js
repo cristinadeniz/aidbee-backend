@@ -9,13 +9,13 @@ const requestSchema = new mongoose.Schema({
     enum: ['requested', 'accepted', 'done', 'rejected'],
     default: 'requested'
   },
-  help: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'help'
-  },
   helper: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
+  },
+  help: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'help'
   }
 })
 

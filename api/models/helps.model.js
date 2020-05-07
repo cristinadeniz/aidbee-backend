@@ -30,8 +30,11 @@ const helpSchema = new mongoose.Schema({
     },
     required: [true, 'Telephone is required']
   },
-  coordinates: {
-    type: Object
+  lat: {
+    type: Number
+  },
+  lng: {
+    type: Number
   },
   is_done: {
     type: Boolean,

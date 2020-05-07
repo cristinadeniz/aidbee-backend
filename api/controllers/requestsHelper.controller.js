@@ -23,7 +23,7 @@ function getAllMyHelpRequests (req, res) {
 function createHelpRequests (req, res) {
   const object = {
     help: req.params.id,
-    user: res.locals.user,
+    helper: res.locals.user,
     message: req.body.message
   }
   RequestModel

@@ -36,7 +36,6 @@ function signup (req, res) {
 }
 
 function login (req, res) {
-  console.log(req.body)
   UserModel.findOne({ email: req.body.email })
     .then(user => {
       if (!user) {
