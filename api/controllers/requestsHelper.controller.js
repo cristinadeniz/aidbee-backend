@@ -10,7 +10,12 @@ module.exports = {
 function getAllMyHelpRequests (req, res) {
   RequestModel
     .find({ helper: { $eq: res.locals.user._id } })
-    .populate('help')
+    .populate({
+      path: 'help',
+      populate: {
+        path: 'requester'
+      }
+    })
     .then(request => res.json(request))
     .catch((err) => handleError(err, res))
 }

@@ -36,6 +36,9 @@ const helpSchema = new mongoose.Schema({
   lng: {
     type: Number
   },
+  requestStatus: {
+    type: String
+  },
   is_done: {
     type: Boolean,
     default: false
