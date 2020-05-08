@@ -20,7 +20,9 @@ function getHelps (req, res) {
 
 function getOtherUserHelps (req, res) {
   HelpModel
-    .find({ requester: { $ne: res.locals.user._id } })
+    .find({
+      $and: [{ requester: { $ne: res.locals.user._id } }, { requestStatus: 'requested' }]
+    })
     .populate('requester')
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
