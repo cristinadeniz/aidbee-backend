@@ -13,6 +13,7 @@ module.exports = {
 function getHelps (req, res) {
   HelpModel
     .find({ requester: res.locals.user._id })
+    .populate('requester')
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
 }
